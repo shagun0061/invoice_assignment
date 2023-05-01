@@ -7,7 +7,6 @@ const EnteriesDetail = () => {
   const params = useParams();
   const [data, setData] = useState("");
 
-  console.log(data);
 
   function getData(url) {
     axios.get(`http://localhost:5000/invoice/${params.id}`).then((res) => {

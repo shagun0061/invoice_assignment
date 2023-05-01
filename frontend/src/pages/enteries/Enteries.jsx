@@ -34,7 +34,6 @@ const Enteries = () => {
         },
       })
       .then((res) => {
-        console.log(res);
         setSearchData(res.data);
       });
   }
@@ -52,7 +51,7 @@ const Enteries = () => {
 
   function handeldelete(id) {
     axios.delete(`http://localhost:5000/invoice/${id}`).then((res) => {
-      console.log(res.data);
+       
       getData("http://localhost:5000/invoice");
     });
   }

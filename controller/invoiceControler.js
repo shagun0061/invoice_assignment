@@ -3,7 +3,6 @@ const InvoiceModel = require("../model/invoiceModel");
 module.exports.addInvoice = async (req, res, next) => {
   let attchment = req.file ? req.file.filename : null;
 
-  console.log("bodyObj", req.body);
 
   try {
     const {
@@ -91,7 +90,6 @@ module.exports.invoiceupdate = async (req, res, next) => {
 
 module.exports.invoiceSearch = async (req, res, next) => {
   const invoice = req.headers.invoice
-  console.log(invoice)
   try {
     const user = await InvoiceModel.find({
       $or: [{ invoice: { $regex: invoice, $options: "i" } }],
