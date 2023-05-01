@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./style.scss";
 
 const Navbar = () => {
+  
   return (
     <div id="nav">
       <div id="title">Invoice 📜</div>

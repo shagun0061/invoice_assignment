@@ -31,6 +31,7 @@ module.exports.addInvoice = async (req, res, next) => {
       attchment,
       invoice_no,
       postal_code,
+      status: false,
     });
 
     return res.send({ status: true, user: user });
@@ -49,12 +50,30 @@ module.exports.invoice = async (req, res, next) => {
   }
 };
 
+module.exports.invoiceSigleId = async (req, res, next) => {
+  let id = req.params.id;
+  if (id) {
+    try {
+      const user = await InvoiceModel.find({ _id: id });
+
+      return res.send({ status: true, user: user });
+    } catch (error) {
+      res.send({ status: false, message: error });
+    }
+  } else {
+    res.send({ status: false, message: "please send id" });
+  }
+};
+
 module.exports.invoicedel = async (req, res, next) => {
-  const id = req.body.id;
+  const id = req.params.id;
+
   try {
-    const user = await InvoiceModel.findByIdAndRemove(id);
+    const user = await InvoiceModel.findByIdAndRemove({ _id: id });
+    console.log(user);
     return res.send({ status: true, user: user });
   } catch (error) {
+    console.log(error);
     res.send({ status: false, message: error });
   }
 };
