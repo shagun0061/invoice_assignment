@@ -90,8 +90,8 @@ module.exports.invoiceupdate = async (req, res, next) => {
 };
 
 module.exports.invoiceSearch = async (req, res, next) => {
-  const invoice = req.body.invoice;
-  const email = req.body.email;
+  const invoice = req.headers.invoice
+  console.log(invoice)
   try {
     const user = await InvoiceModel.find({
       $or: [{ invoice: { $regex: invoice, $options: "i" } }],
@@ -99,6 +99,7 @@ module.exports.invoiceSearch = async (req, res, next) => {
 
     return res.send(user);
   } catch (error) {
+    console.log("error is ", error);
     res.send({ status: false, message: error });
   }
 };
