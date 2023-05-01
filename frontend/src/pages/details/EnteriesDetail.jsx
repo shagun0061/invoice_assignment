@@ -7,11 +7,12 @@ const EnteriesDetail = () => {
   const params = useParams();
   const [data, setData] = useState("");
 
-
   function getData(url) {
-    axios.get(`http://localhost:5000/invoice/${params.id}`).then((res) => {
-      setData(res.data.user[0]);
-    });
+    axios
+      .get(`https://invoice-assignment.onrender.com/invoice/${params.id}`)
+      .then((res) => {
+        setData(res.data.user[0]);
+      });
   }
 
   useEffect(() => {
@@ -62,9 +63,9 @@ const EnteriesDetail = () => {
           </h3>
         </div>
         <div className="img_div">
-        <h3>Attahment File 👇</h3>
+          <h3>Attahment File 👇</h3>
           <img
-            src={`http://localhost:5000/uploads/${data.attchment}`}
+            src={`https://invoice-assignment.onrender.com/uploads/${data.attchment}`}
             alt="attachment"
           />
         </div>

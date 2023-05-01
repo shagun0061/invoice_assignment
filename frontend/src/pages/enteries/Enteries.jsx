@@ -28,7 +28,7 @@ const Enteries = () => {
       invoice: `${searchValue}`,
     };
     axios
-      .get("http://localhost:5000/invoiceSearch", {
+      .get("https://invoice-assignment.onrender.com/invoiceSearch", {
         headers: {
           invoice: searchValue,
         },
@@ -44,23 +44,26 @@ const Enteries = () => {
         status: `${!ele.status}`,
       },
     };
-    axios.patch(`http://localhost:5000/invoice`, updateData).then((res) => {
-      getData("http://localhost:5000/invoice");
-    });
+    axios
+      .patch(`https://invoice-assignment.onrender.com/invoice`, updateData)
+      .then((res) => {
+        getData("https://invoice-assignment.onrender.com/invoice");
+      });
   }
 
   function handeldelete(id) {
-    axios.delete(`http://localhost:5000/invoice/${id}`).then((res) => {
-       
-      getData("http://localhost:5000/invoice");
-    });
+    axios
+      .delete(`https://invoice-assignment.onrender.com/invoice/${id}`)
+      .then((res) => {
+        getData("https://invoice-assignment.onrender.com/invoice");
+      });
   }
 
   function handelDetails(id) {
     navigate(`/enteries/${id}`);
   }
   useEffect(() => {
-    getData("http://localhost:5000/invoice");
+    getData("https://invoice-assignment.onrender.com/invoice");
   }, []);
 
   if (data.length < 1) {
@@ -68,14 +71,14 @@ const Enteries = () => {
       <div
         style={{
           display: "flex",
-          flexDirection:"column",
+          flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
           marginTop: "270px",
         }}
       >
-        <h1>.......Loading Please wait</h1>  
-        <h5 style={{ color: "gray"}}>
+        <h1>.......Loading Please wait</h1>
+        <h5 style={{ color: "gray" }}>
           if data is not comming ,plese add some invoice
         </h5>
       </div>

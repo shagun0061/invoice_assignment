@@ -48,7 +48,7 @@ const Home = () => {
     formdata.append("myFile", value.attchment, value.attchment.name);
 
     const { data } = await axios.post(
-      "http://localhost:5000/invoice",
+      "https://invoice-assignment.onrender.com/invoice",
       formdata
     );
     if (data.status == true) {
